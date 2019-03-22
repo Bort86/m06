@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Employee Database</title>
+    <!-- css -->
+    <!-- Bootstrap -->
+    <!-- Own css -->
+
+    <!-- vendors -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./vendors/JQuery-FormatCurrency/jquery.formatCurrency-1.4.0.min.js"></script>
+    <!-- Angular -->
+
+    <!-- js -->
+    <!-- model -->
+    <script type="text/javascript" src="./js/model/Person.js"> </script>
+    <script type="text/javascript" src="./js/model/Employee.js"></script>
+    <!-- control -->
+    <script type="text/javascript" src="./js/control/index.js"></script>
+  </head>
+
+  <body>
+    <form action="" method="post">
+        <fieldset id="myFS">
+            <h1>EMPLOYEE DATABASE</h1>
+            <label for="dni">DNI: </label>
+            <input type="text" id="dni" value=""><br>
+            <label for="emName">Name: </label>
+            <input type="text" id="empName" value=""><br>
+            <label for="surname">Surname: </label>
+            <input type="text" id="surname" value=""><br>
+            <label for="phone">Phone: </label>
+            <input type="text" id="phone" value=""><br>
+            <label for="birthdate">Birthdate: </label>
+            <input type="text" id="birthdate" value=""><br>
+            <label for="salary">Salary: </label>
+            <input type="text" class="currency" id="salary" value=""><br>
+        </fieldset>
+        <button type="submit" id="butSubmit" >Submit</button>
+    </form>
+
+
+
+  </body>
+</html>

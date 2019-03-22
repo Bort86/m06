@@ -1,0 +1,35 @@
+<!--
+{{reservationService.numchar}}
+-->
+<div class="container well">
+  <form #reservationFilterForm="ngForm" novalidate>
+    <table class="table table-striped">
+      <tr>
+        <td>Filter by price</td>
+        <td>
+          <input type="range" min="0" max="500" [(ngModel)]="priceFilter"
+          name="priceFilter"/>
+          {{priceFilter}}
+        </td>
+      </tr>
+      <tr>
+        <td>Filter by name</td>
+        <input type="text" name="nameFilter" [(ngModel)]= "nameFilter"/>
+      </tr>
+      <tr>
+        <td>Current Page</td>
+        <td>{{currentPage}}</td>
+      </tr>
+      <tr>
+        <td>Reservation per page</td>
+        <td><input type="number" name="itemsPerPage" [(ngModel)]="itemsPerPage"/></td>
+      </tr>
+      <tr>
+        <td>Reservations Found</td>
+        <td>
+          {{reservationsFiltered.length}}
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>

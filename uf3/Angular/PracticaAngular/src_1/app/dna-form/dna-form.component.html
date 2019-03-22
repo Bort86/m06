@@ -1,0 +1,47 @@
+<form #dnaForm = "ngForm" (submit)= "dnaIntro()" novalidate>
+  <div class="container well">
+    <div class="form-horizontal">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>New Dna Sequence Entry</h2>
+        </div>
+      </div>
+      <br/>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="formGroup">Identification *</label>
+        <div class="col-sm-4">
+          <input class="form-control" type="number" name="dnaid" #dnaid = "ngModel"
+          [(ngModel)]="dna.id" required />
+        </div>
+
+        <label class="col-sm-2 control-label" for="formGroup">DNA sequence: *</label>
+        <div class="col-sm-6">
+          <textarea rows="8" cols="80" name="dnasequence" #dnasequence = "ngModel"
+          [(ngModel)] = "dna.sequence" required DnaValidator></textarea>
+        </div>
+      </div>
+      <br/>
+
+      <label class="col-sm-2 control-label" for="formGroup">Patient </label>
+      <div class="col-sm-2">
+        <select class="form-control" name="patientdna" #patientdna="ngModel"
+          [(ngModel)]="dna.patient" required>
+          <option *ngFor="let patient of patients; let i = index"
+          [ngValue]="patient">
+          {{patient.getName()}} {{patient.getSurname()}}
+        </option>
+      </select>
+    </div>
+    <br/>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="formGroup"></label>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</form>

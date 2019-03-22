@@ -1,0 +1,18 @@
+(HTML) Template Syntax
+	# variable declaration
+	[] property binding 	[hidden]="expresión controlador"
+	{{}} interpolation
+	[()] two-way binding    (entre el tamplate y el controlador)
+	* Directives		*ngIf
+
+// abrir el atom en sudo
+// para crear un componente volvemos a la terminal y escribimos:
+sudo ng generate component <nombre_del_componente>
+
+//sudo ng serve -o
+//ir a angular.json para linkar bootstrap
+//si da error de puerto, metemos 
+sudo ng serve -o --port<otro_número_de_puerto>
+
+//al realizar demasiadas consultas en el puerto (como al cargar bootstrap) puede que ng se "cuelgue", //por lo que cambiamos el máximo de "escuchas" del servicio:
+sudo sysctl fs.inotify.max_user_watches=<número_máximo_de_escuchas>

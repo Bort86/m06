@@ -1,0 +1,97 @@
+<p>
+  reservation-management works!
+  {{reservationService.numElementCarrito}}
+</p>
+
+<div class="container well">
+  <form class="" action="index.html" method="post">
+    <table class="table table-striped">
+      <tr>
+        <td>Filter by price</td>
+        <td>
+          <input type="range" min="0" max="500"
+          [(ngModel)] = "priceFilter" name="priceFilter"
+          (change)="filter()">
+          {{priceFilter}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>Filter by name</td>
+        <td>
+          <input type="text"
+          [(ngModel)] = "nameFilter" name="nameFilter"
+          (keyup)="filter()">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Current Page</td>
+        <td>
+          {{currentPage}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>Reservation per page</td>
+        <td>
+          <input type="number"
+          [(ngModel)] = "itemsPerPage" name="itemsPerPage">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Reservations Found</td>
+        <td>
+          {{reservationFiltered.length}}
+        </td>
+      </tr>
+
+      <div class="container well" *ngIf="reservationFiltered.length==0">
+        No reservations found
+      </div>
+
+      <div class="container well" *ngIf="reservationFiltered.length>0">
+        <form #reservationManagementForm="ngForm" novalidate>
+          <table class="table table-striped">
+            <tr>
+              <td>Customer Name</td>
+              <td>Email</td>
+              <td>Telephone</td>
+              <td>Reservation Date</td>
+              <td>Reservation Time</td>
+              <td>Reservation Price</td>
+              <td>Eliminate Reservation</td>
+              <td>Go to Detail</td>
+            </tr>
+            <tr *ngFor="let reservation of reservationFiltered | paginate: {itemsPerPage: itemsPerPage, currentPage : currentPage}; let i = index;"
+            (click)="onSelect(reservation)">
+              <td>
+                <!-- Interpolacion {{reservation.name}} -->
+                <input type="text" class="form-control"
+                #clientName{{i}}="ngModel"
+                [(ngModel)]="reservation.name" name="clientName{{i}}">
+              </td>
+              <td> {{reservation.getEmail()}}</td>
+              <td> {{reservation.getPhone()}}</td>
+              <td>
+              <!--  <input type="date" class="form-control" name="" value=""> -->
+              </td>
+              <td>{{reservation.getReservationTime().getTime()}}</td>
+              <td>{{reservation.getTotalPrice() | currency : 'EUR'}}</td>
+              <td>
+                <button class="btn btn-danger">X</button>
+              </td>
+              <td>
+                <button class="btn btn-primary">Go to detail</button>
+              </td>
+            </tr>
+          </table>
+          <pagination-controls (pageChange)="currentPage=$event" max-size="5" directionLinks = "true" autoHide="true"></pagination-controls>
+        </form>
+      </div>
+
+    </table>
+  </form>
+  <app-reservation-entry [reservation] = "reservationSelected" *ngIf="reservationSelected"></app-reservation-entry>
+</div>
