@@ -64,7 +64,7 @@
         <label class="col-sm-2 control-label" for="formGroup">Reservation time: </label>
         <div class="col-sm-2">
           <select class="form-control" name="reservationTime" id="reservationTime" #reservationTime="ngModel"
-            [(ngModel)]="reservation.reservationTime.time" required>
+            [(ngModel)]="reservation.reservationTime.time" required [compareWith]="compareTime">
             <option *ngFor="let reservationTime of reservationTimes; let i = index" [ngValue]="reservationTime">
               {{reservationTime.getTime()}}
             </option>

@@ -1,0 +1,38 @@
+<div class="container well">
+  <fieldset>
+      <legend>Login</legend>
+      <form #userLoginForm="ngForm" novalidate
+      (submit)="connection()">
+        <div class="form-group">
+            <input type="text" name="nick"
+            #nick="ngModel" [(ngModel)]="userConnected.nick"
+            required/>
+            <div [hidden]="!nick.touched || nick.valid"
+            class="alert alert-danger">
+              Nick is required
+            </div>
+            <input type="password" name="password"
+            #password="ngModel" [(ngModel)]=
+            "userConnected.password"
+            required/>
+            <div [hidden]="!password.touched || password.valid"
+              class="alert alert-danger">
+              Password is required
+            </div>
+            <div class="alert alert-danger"
+              [hidden]="validUserData">
+              Either user nick or password is invalid
+            </div>
+            <div class="form-group col-sm-6">
+              <button type="submit"
+              class="btn btn-default btn-primary"
+              >Login</button>
+              <button type="button"
+              class="btn btn-default btn-primary"
+              >Register</button>
+            </div>
+
+        </div>
+      </form>
+  </fieldset>
+</div>

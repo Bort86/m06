@@ -131,4 +131,7 @@ export class ReservationEntryComponent implements OnInit {
     this.reservation.setTablePreference(tablePreference);
     this.calculateTotalPrice();
   }
+  compareTime(time1: ReservationTime, time2: ReservationTime): boolean{
+    return time1 && time2 ? time1.id == time2.id : time1 == time2;
+  }
 }
